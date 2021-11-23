@@ -1,6 +1,10 @@
+{% load static %}<!-- -->
 <html>
     <head>
-        <title>fofocas do renato</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}"> <!-- -->
+        <title>noticias blog!</title>
     </head>
     <body>
         <div>
@@ -18,7 +22,7 @@
         
         {% for post in posts %}
             <div>
-                <h1>teste 000</h1>
+                <h1>conteudo dentro da div</h1>
 
                 <h2><a href="">{{ post.title }}</a></h2> <!--interpolando os titulo de post-->
                 <p>{{ post.text|linebreaksbr }}</p> <!-- -->
