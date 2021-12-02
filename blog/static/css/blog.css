@@ -1,7 +1,16 @@
+body {
+    background-color: blue;
+}
+
 h1 a, h2 a {
-    color: #08fa30; 
+    color: #469754; 
 }
 
 p {
-    color: #fb05a9;
+    color: #fbd605;
+}
+
+.post {
+    align-items: center;
+    background-color: aqua;
 }
