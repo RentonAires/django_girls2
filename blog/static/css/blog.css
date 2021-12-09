@@ -1,16 +1,11 @@
 body {
-    background-color: blue;
+    background-color: rgb(108, 108, 148);
 }
 
 h1 a, h2 a {
-    color: #469754; 
+    color: #f00e0e; 
 }
 
 p {
-    color: #fbd605;
-}
-
-.post {
-    align-items: center;
-    background-color: aqua;
+    color: #7cfb05;
 }

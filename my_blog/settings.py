@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'blog', #declarando o app
 ]
 
 MIDDLEWARE = [
@@ -80,16 +80,20 @@ WSGI_APPLICATION = 'my_blog.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
+# Concxao com banco de dados postgresql
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'postgres'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', 'postgres'),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', #tipo de banco de dados que django vai usar
+        'NAME': os.environ.get('DB_NAME', 'postgres'), #nome do banco de dados 
+        'USER': os.environ.get('DB_USER', 'postgres'),#usuario ADM do banco de dados
+        'PASSWORD': os.environ.get('DB_PASS', 'postgres'),#senha do banco de dados
+        'HOST': 'localhost',# enderoço do banco de dados "local"
+        'PORT': '5432',# porta do banco de dados 
     }
 }
+
+#Concxao com banco de dados sqlite3 "padrao"
 """
 DATABASES = {
     'default': {
