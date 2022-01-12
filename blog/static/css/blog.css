@@ -3,9 +3,9 @@ body {
 }
 
 h1 a, h2 a {
-    color: #f00e0e; 
+    color: rgb(246, 244, 244); 
 }
 
 p {
-    color: #7cfb05;
+    color: rgb(160, 200, 123);
 }
