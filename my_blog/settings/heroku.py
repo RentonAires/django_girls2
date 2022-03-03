@@ -1,6 +1,4 @@
 import environ  #carregando a blibioteca environ
-from dotenv import load_dotenv
-load_dotenv()
 
 from my_blog.settings.base import * # importanto o setting base para configurar alguma variaveis
 
