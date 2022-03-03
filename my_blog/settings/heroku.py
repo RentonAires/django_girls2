@@ -1,4 +1,4 @@
-import environ  #carregando a blibioteca eviron
+import environ  #carregando a blibioteca environ
 
 from my_blog.settings.base import * # importanto o setting base para configurar alguma variaveis
 
