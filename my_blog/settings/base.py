@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRET_KEY') #chave secreta de segurança em .env
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool) #debug de produçao em .env
 
-ALLOWED_HOSTS = ['127.0.0.1', 'https://mysterious-dusk-12560.herokuapp.com/'] #Hospedeiros permitidos
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com'] #Hospedeiros permitidos
 
 
 # Application definition
