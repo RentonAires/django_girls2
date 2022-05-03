@@ -1,9 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<h2>Update Post</h2>
+<h2>New Post</h2>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }} <!--tag do dajngo para chamar o formulario e mostra -->
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" class="save btn btn-default">Salve</button>
     </form>
 {% endblock %}

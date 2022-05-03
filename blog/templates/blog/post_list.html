@@ -2,7 +2,7 @@
 {% load static %}<!-- -->
 {% block content %}
     {% for post in posts %}
-        <hr>
+    
         <div class="post">
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p> <!---->
@@ -10,6 +10,6 @@
                 {{ post.published_date }}
             </div>
         </div>
-        <hr>
+        
     {% endfor %}
 {% endblock %}

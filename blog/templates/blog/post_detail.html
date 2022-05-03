@@ -1,17 +1,38 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
-    <div class="post">
-        {% if post.published_date %}
+    <div class="">
+        <div class="card w-75">
+            {% if post.published_date %}
         <div class="date">
             {{ post.published_date }}
         </div>
-        <hr>
+
         {% endif %}
-        {% if user.is_authenticated %}
-         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        {% endif %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title }}</h5>
+              <p class="card-text">{{ post.text|linebreaksbr }}</p>
+              <a href="#" class="">{% if user.is_authenticated %}
+                <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span>
+        {% endif %}</a>
+            </div>
+          </div>
+    </div>
+    <div class="">
+        <span class="glyphicon glyphicon-plus"></span>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }} <!--tag do dajngo para chamar o formulario e mostra -->
+            <button type="submit" class="save btn btn-default">Salve</button>
+        </form>
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                {% for item in comment %}
+                    <div class="card-header">Comment: {{ item.author}}</div>
+                        <div class="card-body text-secondary">
+                        <p class="card-text">Text:{{ item.text }}</p>
+                        <h5 class="card-title">Date:{{ item.created_date }}</h5>
+                {% endfor %}
+            </div>
+        
     </div>
 {% endblock %}

@@ -3,9 +3,23 @@ body {
 }
 
 h1 a, h2 a {
-    color: rgb(24, 23, 23); 
+    color: rgb(24, 23, 23);
+    text-align: center;
 }
 
 p {
     color: rgb(25, 26, 24);
+}
+.post {
+    border: 2px;
+    border-color: blue;
+    border-style: solid;
+    margin: 5px;
+    padding: 5px;
+
+}
+.page-header {
+    color: blueviolet;
+    text-align: center;
+
 }
