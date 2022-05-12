@@ -4,27 +4,30 @@
 {% block content %}
     <div class="">
         <div class="card w-75">
-            {% if post.published_date %}
+        {% if post.published_date %}
         <div class="date">
             {{ post.published_date }}
         </div>
-
         {% endif %}
+        
             <div class="card-body">
               <h5 class="card-title">{{ post.title }}</h5>
               <p class="card-text">{{ post.text|linebreaksbr }}</p>
-              <a href="#" class="">{% if user.is_authenticated %}
+              <a href="#" class="">
+                  {% if user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span>
         {% endif %}</a>
             </div>
           </div>
     </div>
     <div class="">
+        {% if user.is_authenticated %}
         <span class="glyphicon glyphicon-plus"></span>
         <form method="POST" class="post-form">{% csrf_token %}
             {{ form.as_p }} <!--tag do dajngo para chamar o formulario e mostra -->
             <button type="submit" class="save btn btn-default">Salve</button>
         </form>
+        {% endif %}
             <div class="card border-secondary mb-3" style="max-width: 18rem;">
                 {% for item in comment %}
                     <div class="card-header">Comment: {{ item.author}}</div>
