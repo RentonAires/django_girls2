@@ -7,8 +7,12 @@ from .forms import PostForm, CommentForm
 
 # Create your views here.
 
+#index
+def index(request):
+    return render(request, 'blog/index.html')
+
 def post_list(request): 
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') #queryset
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date') #queryset
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 #funcao que retorna o template html
