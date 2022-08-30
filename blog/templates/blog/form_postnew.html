@@ -1,0 +1,25 @@
+{% extends 'blog/index.html' %}
+{% load static %}<!-- -->
+{% load  widget_tweaks  %}
+
+{% block content %}
+<body>
+    <h1 id="titulo-form">formulario</h1>
+    <div class="container-form">
+        
+        <form action="" method="POST" > {% csrf_token %}
+            
+            <div class="campo-titulo">
+                <label for="title">Titulo</label>
+                {% render_field form.title  %}
+            </div>
+            <div class="">
+                <label for="text">{{ form.text.label }}</label>
+                <textarea id="{{ form.text.auto_id }}" name="{{ form.text.name }}" rows="5" cols="5">{{ form.text.value|default_if_none:"" }}</textarea>
+            </div>  
+                
+            <button type="submit" class="button-save">Save</button>
+        </form>
+    </div>
+</body>      
+{% endblock %}

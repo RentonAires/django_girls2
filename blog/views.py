@@ -43,7 +43,10 @@ def post_new(request):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'blog/post_new.html',{'form': form})
+    return render(request, 'blog/form_postnew.html',{'form': form})
+
+def form_postnew(request):
+    return render(request, 'blog/form_postnew.html')
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)

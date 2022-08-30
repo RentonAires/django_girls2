@@ -1,5 +1,6 @@
 {% extends 'blog/index.html' %}
 {% load static %}
+{% load  widget_tweaks  %}
 
 {% block content %}
 
@@ -17,27 +18,34 @@
             {% endif %}
 
             {% if user.is_authenticated %}
-                <a href="{% url 'post_edit' pk=post.pk %}"><button class="button-post-edit">Editar Post</button></a>
+            <button type="submit" class="button-save"><a href="{% url 'post_edit' pk=post.pk %}">Editar post</a></button>
             {% endif %}
 
             {% if user.is_authenticated %}
             <div class="card-comment-detail-formmulario">
                 <form method="POST" class="post-form">{% csrf_token %}
-                    {{ form.as_p }}
-                    <!--tag do dajngo para chamar o formulario e mostra -->
+                    <!--{{ form.as_p }} tag do dajngo para chamar o formulario e mostra -->
+                    <div>
+                        <label for="">Digite seu comentario</label>
+                        {% render_field form.text %}
+                    </div>
+                        <div>
+                            <label for="">Author</label>
+                            {% render_field form.author %}
+                        </div>
                     <button type="submit" class="button-save">Save</button>
                 </form>
             </div>
             {% endif %}
             <div class="card-comment-detail-conteiner">
-                <h2 class="palavra-comentario">Comentário:</h2>
-                {% for item in comment %}
+            <h2 class="palavra-comentario">Comentário:</h2>
+            {% for item in comment %}
                 <div class="card-comment-detail-body">
                     <p>Comentario de: {{ item.author}}</p>
                     <p class="card-comment-detail-text">Texto:{{ item.text }}</p>
                     <p class="card-comment-detail-date"> <strong>Data do comentario:{{ item.created_date }}</strong></p>
                 </div>
-                {% endfor %}
+            {% endfor %}
             </div>
         </section>
     </main>

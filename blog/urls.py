@@ -8,4 +8,5 @@ urlpatterns = [
     path('post/new/', views.post_new, name='post_new'),#caminho/view /nome da urls
     path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
     path('comment/', views.comment, name='comment'),
+    path('post/postnew/', views.form_postnew, name='form_postnew'),
 ]
