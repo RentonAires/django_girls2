@@ -45,9 +45,6 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/form_postnew.html',{'form': form})
 
-'''def form_postnew(request):
-    return render(request, 'blog/form_postnew.html')
-'''
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
