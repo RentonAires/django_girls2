@@ -1,4 +1,3 @@
-from turtle import title
 from django import forms #importa o formulario do django
 from .models import Post, Comment #importa o moldelo de post
 
