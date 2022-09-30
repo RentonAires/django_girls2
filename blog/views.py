@@ -61,7 +61,7 @@ def post_edit(request, pk):
 
 #comment functions
 def comment(request):
-    comment = Comment.objects.all()
+    comment = Comment.objects.order_by('-created_date').all()
     return render(request, 'blog/comment.html', {'comment': comment})
 
 

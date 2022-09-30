@@ -2,19 +2,27 @@
 {% load  widget_tweaks  %}
 
 {% block content %}
-    <div class="card-comment-detail-editar">
-        <h2>Update Post</h2>
+    <div class="card-comment-detail-formmulario">
+
+        <h2 id="cabecalho-editar">Editar Post</h2>
+
         <form method="POST" class="post-form">{% csrf_token %}
+
             <div>
                 <label for="">Titulo</label>
                 {% render_field form.title %}
             </div>
+
             <div>
                 <label for="">Texto do post</label>
                 {% render_field form.text %}
             </div>
+
             <!--{{ form.as_p }} tag do dajngo para chamar o formulario e mostra -->
-            <button type="submit" class="button-save">Save</button>
+            <div>
+                <button type="submit" class="button-save">Save</button>
+            </div>
+
         </form>
     </div>
 {% endblock %}

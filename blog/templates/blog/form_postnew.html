@@ -3,23 +3,25 @@
 {% load  widget_tweaks  %}
 
 {% block content %}
-<body>
+<section>
     <h1 id="titulo-form">Formulario</h1>
+
     <div class="container-form">
         
         <form action="" method="POST" > {% csrf_token %}
-            
+            <!--exemplo usando widget tweaks -->
             <div class="campo-titulo">
                 <label for="title">Titulo</label>
                 {% render_field form.title  %}
             </div>
-            <div class="">
+            <!--exemplo usando widget tweaks -->
+            <div class="campo-titulo">
                 <label for="text">{{ form.text.label }}</label>
                 <textarea id="{{ form.text.auto_id }}" name="{{ form.text.name }}" rows="5" cols="5">{{ form.text.value|default_if_none:"" }}</textarea>
             </div>  
                 
-            <button type="submit" class="button-save">Save</button>
+            <button type="submit" class="button">Save</button>
         </form>
     </div>
-</body>      
+</section>    
 {% endblock %}

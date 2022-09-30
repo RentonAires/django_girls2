@@ -1,53 +1,99 @@
 {% extends 'blog/index.html' %}
 {% load static %}
-{% load  widget_tweaks  %}
+{% load widget_tweaks %}
 
 {% block content %}
-
-<body>
-    <main>
-        <section>
-            {% if post.published_date %}
-            <div class="card-conteiner-detail">
-                <div class="card-body-detail">
-                    <h2 class="card-title-detail">{{ post.title }}</h2>
-                    <p class="card-text-detail">{{ post.text }}</p>
-                    <p class="card-date-detail"><strong>{{ post.published_date }}</strong></p>
-                </div>
+    <!--Seção que tarz o post a ser editado ou comentado-->
+    <section>
+    
+        {% if post.published_date %}
+    
+        <div class="card-conteiner-detail">
+    
+            <div class="card-body-detail">
+    
+                <h2 class="card-title-detail">{{ post.title }}</h2>
+                <p class="card-text-detail">{{ post.text }}</p>
+                <p class="card-date"><strong>{{ post.published_date }}</strong></p>
+    
             </div>
-            {% endif %}
+        </div>
+        
+    
+        {% endif %}
 
+    </section>
+    <!--div com dois botoes editar poste e adicionar comentario-->
+    
+    <section>
+        <div class="butao-editar">
             {% if user.is_authenticated %}
-            <button type="submit" class="button-save"><a href="{% url 'post_edit' pk=post.pk %}">Editar post</a></button>
+            <button type="submit" class="button-editar"><a href="{% url 'post_edit' pk=post.pk %}" id="link-butao-editar">Editar post</a></button> 
+            <button type="button" class="button-editar" onclick="myFunction()">Adicionar comentario</button>
             {% endif %}
+        </div>
+    </section>
 
-            {% if user.is_authenticated %}
-            <div class="card-comment-detail-formmulario">
-                <form method="POST" class="post-form">{% csrf_token %}
-                    <!--{{ form.as_p }} tag do dajngo para chamar o formulario e mostra -->
-                    <div>
-                        <label for="">Digite seu comentario</label>
-                        {% render_field form.text %}
-                    </div>
-                        <div>
-                            <label for="">Author</label>
-                            {% render_field form.author %}
-                        </div>
+    <!--secão de comentario que fica oculta chamada atravel de função-->
+    <section>
+        {% if user.is_authenticated %}
+    
+        <div class="" id="show-form" style="display: none;">
+    
+            <form method="POST" class="post-form">{% csrf_token %}
+    
+                <!--{{ form.as_p }} tag do dajngo para chamar o formulario e mostra -->
+                <div class="card-comment-detail-formmulario">
+                    <label for="">Author</label>
+                    <div class="select-author">{% render_field form.author %}</div>
+                </div>
+    
+                <div class="card-comment-detail-formmulario">
+                    <label for="">Digite seu comentario</label>
+                    {% render_field form.text %}
+                </div>
+    
+                <div class="card-comment-detail-formmulario">
                     <button type="submit" class="button-save">Save</button>
-                </form>
-            </div>
-            {% endif %}
-            <div class="card-comment-detail-conteiner">
-            <h2 class="palavra-comentario">Comentário:</h2>
-            {% for item in comment %}
-                <div class="card-comment-detail-body">
-                    <p>Comentario de: {{ item.author}}</p>
-                    <p class="card-comment-detail-text">Texto:{{ item.text }}</p>
-                    <p class="card-comment-detail-date"> <strong>Data do comentario:{{ item.created_date }}</strong></p>
                 </div>
-            {% endfor %}
+            </form>
+    
+        </div>
+    
+        {% endif %}
+    </section>
+
+    <!--seção preview de comentarios -->
+    <section>
+
+        <div class="card-comment-detail-conteiner">
+    
+            <h2 class="palavra-comentario">Comentários:</h2>
+    
+            {% for item in comment %}
+    
+            <div class="card-comment-detail-body">
+                <p>Comentario de: {{ item.author}}</p>
+                <p class="card-comment-detail-text">Texto:{{ item.text }}</p>
+                <p class="card-comment-detail-date"> <strong>Data do comentario:{{ item.created_date }}</strong></p>
             </div>
-        </section>
-    </main>
-</body>
+    
+            {% endfor %}
+    
+        </div>
+    </section>
 {% endblock %}
+    <!--funçao em javascript para o campo de comentario-->
+    {% block script %}
+    <script>
+        function myFunction() {
+            const element = document.getElementById("show-form");
+            if (element.style.display == "none") {
+                element.style.display = "block";
+            }
+            else {
+                element.style.display = "none";
+            }
+        }
+    </script>
+    {% endblock script %}
